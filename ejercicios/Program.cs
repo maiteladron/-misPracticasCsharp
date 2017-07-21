@@ -152,6 +152,7 @@ namespace ejercicios
                     Console.WriteLine("APROBADO.");
                 }
                 //Esto  es una prueba para ver que funciona el GIT
+                //Este ejercicio hay que completarlo
 
             }
             catch
