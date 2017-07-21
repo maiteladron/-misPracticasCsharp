@@ -151,8 +151,22 @@ namespace ejercicios
                 {
                     Console.WriteLine("APROBADO.");
                 }
-                //Esto  es una prueba para ver que funciona el GIT
-                //Este ejercicio hay que completarlo
+                else if (nota < 8)
+                {
+                    Console.WriteLine("NOTABLE.");
+                }
+                else if (nota < 10)
+                {
+                    Console.WriteLine("SOBRESALIENTE.");
+                }
+                else if (nota == 10)
+                {
+                    Console.WriteLine("MATRÍCULA.");
+                }
+                else
+                {
+                    Console.WriteLine("NO TENEMOS CALIFICACIÓN.");
+                }
 
             }
             catch
