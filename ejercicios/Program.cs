@@ -18,7 +18,7 @@ namespace ejercicios
                 do
                 {
                     Console.Clear();
-                    Console.WriteLine("Bienvenido, debes introducir el ejercicio que quieres realizar: (0 escape)"); 
+                    Console.WriteLine("Bienvenido, debes introducir el ejercicio que quieres realizar: (0 escape)");
                     ejercicio = Int32.Parse(Console.ReadLine());
                     switch (ejercicio)
                     {
@@ -103,6 +103,15 @@ namespace ejercicios
                         case 29:
                             Program.Ejercicio29();
                             break;
+                        case 30:
+                            Program.Ejercicio30();
+                            break;
+                        case 31:
+                            Program.Ejercicio31();
+                            break;
+                        case 32:
+                            Program.Ejercicio32();
+                            break;
                         default:
                             Program.Ejercicio(ejercicio);
                             break;
@@ -125,7 +134,7 @@ namespace ejercicios
             {
                 Console.WriteLine("ERROR");
             }
-}
+        }
         static void Ejercicio2()
         {
             try
@@ -179,7 +188,7 @@ namespace ejercicios
                         }
                     }
                 } while (count != 0);
-                global::System.Console.WriteLine("El número mayor es: " + list[0]);
+                Console.WriteLine("El número mayor es: " + list[0]);
             }
             catch
             {
@@ -189,7 +198,7 @@ namespace ejercicios
         static void Ejercicio4()
         {
             try
-            { 
+            {
                 List<int> list = new List<int>();
                 Console.WriteLine("introduce el primer número:");
                 list.Add(Int32.Parse(Console.ReadLine()));
@@ -284,7 +293,7 @@ namespace ejercicios
             catch
             {
                 Console.WriteLine("ERROR");
-            }    
+            }
         }
         static void Ejercicio9()
         {
@@ -332,7 +341,7 @@ namespace ejercicios
                     case 1:
                         if (dia <= 31)
                         {
-                             Console.WriteLine("Fecha correcta.");
+                            Console.WriteLine("Fecha correcta.");
                         }
                         else
                         {
@@ -548,14 +557,14 @@ namespace ejercicios
         static void Ejercicio14()
         {
             try
-            { 
+            {
                 int cont = 0; //un contador, el cual si es mayor a dos indica que el numero no es primo
                 int num = 2;
                 for (int i = 0; i < 50; num++)
                 {
                     cont = 0;//igualamos a cero para hacer otra evaluacion con otro numero
                     for (int j = 1; j <= num; j++)//aquí comprobamos si el número es primo o no
-                    {   
+                    {
                         if (num % j == 0)
                         {
                             cont = cont + 1;
@@ -572,7 +581,7 @@ namespace ejercicios
             {
                 Console.WriteLine("ERROR");
             }
-}
+        }
         static void Ejercicio15()
         {
             try
@@ -716,12 +725,12 @@ namespace ejercicios
                 list.Add(1);
                 int count = 0;
                 int n = 2;
-                for(n = 2; count <= 1000; n++)
+                for (n = 2; count <= 1000; n++)
                 {
                     count = ((3 * list[n - 1]) + (2 * list[n - 2]));
                     list.Add(count);
                 }
-                Console.WriteLine( "Valor del primer termino mayor o igual a 1000: " + count);
+                Console.WriteLine("Valor del primer termino mayor o igual a 1000: " + count);
                 Console.WriteLine("Valor del rango: " + n);
             }
             catch
@@ -737,7 +746,7 @@ namespace ejercicios
                 int num = Int32.Parse(Console.ReadLine());
                 string numero = num.ToString();
                 string aux = "";
-                Boolean bol = false;            
+                Boolean bol = false;
                 for (int i = 0; i < numero.Length; i++)
                 {
                     aux = numero.Substring(i, 1) + aux;
@@ -871,25 +880,25 @@ namespace ejercicios
             {
                 Console.WriteLine("introduce un número:");
                 int n = Int32.Parse(Console.ReadLine());
-                int[,] triangulo= new int[n+1,n+1];
+                int[,] triangulo = new int[n + 1, n + 1];
                 for (int i = 0; i <= n; i++)
                 {
                     for (int j = 0; j <= i; j++)
                     {
                         if (j == 0)
                         {
-                            triangulo[i,j] = 1;
+                            triangulo[i, j] = 1;
                         }
                         else if (j == i)
                         {
-                            triangulo[i,j] = 1;
+                            triangulo[i, j] = 1;
                         }
                         else
                         {
                             int num1 = i - 1;
                             int num2 = j - 1;
-                            int n1 = triangulo[num1 , num2];
-                            int n2 = triangulo[num1 , j];
+                            int n1 = triangulo[num1, num2];
+                            int n2 = triangulo[num1, j];
                             int n3 = n1 + n2;
                             triangulo[i, j] = n3;
                         }
@@ -992,7 +1001,7 @@ namespace ejercicios
                     }
                 }
                 if (cont == num)
-                { 
+                {
                     Console.WriteLine("El número " + num + " es perfecto.");
                 }
                 else
@@ -1046,11 +1055,142 @@ namespace ejercicios
                         }
                     }
                     if (cont == num)
-                    { 
+                    {
                         Console.WriteLine(num);
                         i++;
                     }
                 }
+            }
+            catch
+            {
+                Console.WriteLine("ERROR");
+            }
+        }
+        static void Ejercicio30()
+        {
+            try
+            {
+                // declaramos las variables
+                int num = 0; //con esta variable recorre los números para encontrar el pefecto
+                int cont = 0; // con esta variable se calcula si es perfecto.
+                bool continuar = true; // detecta si hay que continuar o no
+                bool sino = false; // detecta si la variable op es "sí" o "no"
+                do//do para continuar
+                {
+                    num++; //aumentamos el número para no crear un bucle infinito
+                    cont = 0;//iniciamos cont, para que no guarde las sumas de números anteriores
+                    for (int j = 1; j < num; j++)//aquí comprobamos si el número es primo o no, nos vale para perfectos con modificaciones. Nunca se suma por el mismo número
+                    {
+                        if (num % j == 0)//quiere decir que es divisible
+                        {
+                            cont = cont + j;//ampliamos cont, para ver si llega a ser perfecto
+                        }
+                    }
+                    if (cont == num)// si es Perfecto
+                    {
+                        Console.WriteLine(num + " es un número perfecto.");//mensaje por consola
+                        do//do para sino
+                        {
+                            Console.WriteLine("¿Quieres el siguiente número perfecto (sí/no)?");//mensaje por consola
+                            string op = Console.ReadLine();//cogemos contenido para la variable op
+                            if (op == "sí")
+                            {
+                                //opción válida de op, por lo que quiere continuar con el siguiente número perfecto y sale del bucle sino
+                                continuar = true;
+                                sino = true;
+                            }
+                            else if (op == "no")
+                            {
+                                //opción válida de op, por lo que quiere no continuar con el siguiente número perfecto y sale del bucle sino
+                                continuar = false;
+                                sino = true;
+                            }
+                            else
+                            {
+                                //opción no válida de op, por lo que continua el bucle sino
+                                sino = false;
+                            }
+                        } while (!sino);//si las opciones de op son correctas o no, si no lo son las vuelve a solicitar, si son correctas sale
+                    }
+                } while (continuar);//si quiere continuar o no
+            }
+            catch//si hay algún error viene aquí
+            {
+                Console.WriteLine("ERROR");//mensaje por consola
+            }
+        }
+        static void Ejercicio31()//No realizo una funión externa ya que no me convencía el código que debía tener
+        {
+            try
+            {
+                //Tabla ASCII
+                Console.WriteLine("TABLA ASCII COMPLETA:");//mensaje por consola
+                for (int i = 32; i <= 126; i++)//Valores solicitados
+                {
+                    Console.WriteLine("El caracter número " + i + " es '" + (char)i + "'");//(char) convierte el valor de ascii al char, mensaje por consola
+                }
+                //de minúsculas a mayúsculas
+                Console.WriteLine("FUNCIÓN DE TRANSFORMACIÓN DE MINÚSCULAS A MAYÚSCULAS:");//mensaje por consola
+                for (int i = 97; i <= 122; i++)//Valores de ascii minúsculas
+                {
+                    char var = (char)i;//convertimos a char
+                    string v = var.ToString();//convertimos a string
+                    Console.WriteLine("La mayúscula correspondiente a '" + var + "' es '" + v.ToUpper() + "'");//ToUpper convierte a mayúsculas, mensaje por consola
+                }
+                //de mayúsculas a minúsculas
+                Console.WriteLine("FUNCIÓN DE TRANSFORMACIÓN DE MAYÚSCULAS A MINÚSCULAS:");//mensaje por consola
+                for (int i = 65; i <= 90; i++)//Valores de ascii mayúsculas
+                {
+                    char var = (char)i;//convertimos a char
+                    string v = var.ToString();//convertimos a string
+                    Console.WriteLine("La minúscula correspondiente a '" + var + "' es '" + v.ToLower() + "'");//ToLower convierte a minúsculas, mensaje por consola
+                }
+                //números
+                Console.WriteLine("FUNCIÓN DE TRANSFORMACIÓN DE NÚMEROS:");//mensaje por consola
+                for (int i = 48; i <= 57; i++)//Valores de ascii de los números
+                {
+                    char var = (char)i;//convertimos a char
+                    string v = var.ToString();//convertimos a string
+                    int num = Int32.Parse(v);//convertimos a integer/número
+                    Console.WriteLine("El número correspondiente a la letra '" + var + "' es '" + num + "'");//mensaje por consola
+                }
+
+            }
+            catch//si hay algún error viene aquí
+            {
+                Console.WriteLine("ERROR");//mensaje por consola
+            }
+        }
+
+        static void Ejercicio32()//no añado la hora ya que para la media, no hace falta
+        {
+            try
+            {
+                int n = 0;// inicializamos una variable usada en todo el programa
+                float[,] medicion = new float[10,4];//inicializamos y damos dimensión a un array, la última posición es para la temperatura media
+                int contador = 0;//contador para los días de frio
+                for (n = 0; n < 10; n++)//for inicial para rellenar el array
+                {
+                    int d = n + 1;//variable para impresión por pantalla
+                    for (int m = 0; m < 3; m++)//segundofor para rellenar el array
+                    {
+                        int e = m + 1;//variable para impresión por pantalla
+                        Console.WriteLine("introduce la medicion " + e + " del día " + d + ":");//solicitamos que ponga la temperatura
+                        medicion[n,m] = float.Parse(Console.ReadLine());//recogemos la temperatura
+                        if (m == 2)//rellenamos el último hueco del array con la temperatura media de ese día
+                        {
+                            medicion[n, 3] = ((medicion[n, 0] + medicion[n, 1] + medicion[n, 2]) / 3);//calculamos la media
+                        }//fin if
+                    }//fin for 2
+                }//fin for 1
+                for (n = 0; n < 10; n++)//for para recorrer el array y sacar los días de frío
+                {
+                   if(medicion[n, 3] < 0)//comprobamos que la media sea inferior a 0
+                    {
+                        contador++;//ampliamos en 1 el contador de días de frio
+                    }
+                }
+                Console.WriteLine("De las mediciones sacadas de los 10 días, " + contador + " días hizo menos de 0 grados.");//impresión por pantalla del resultado
             }
             catch
             {
